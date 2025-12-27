@@ -20,6 +20,10 @@ const createuserform = document.forms['AddUserForm'];
 createuserform.addEventListener('submit',async(e)=>{
     e.preventDefault();
     const formdata= new FormData(createuserform);
-    const response=await axios.post(`http://ums12.runasp.net/api/users`,formdata);
-
-});
+    const response= await axios.post(`https://ums12.runasp.net/api/users`,formdata);
+    
+if( response.status == 200){
+    location.href='./index.html';
+}
+console.log(response);
+})
