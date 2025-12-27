@@ -16,7 +16,22 @@ createuserform.addEventListener("submit",async(e)=>{
     const response = await axios.post(`http://ums12.runasp.net/api/users`,user);
 //console.log(user);
 });*/
+
 const createuserform = document.forms['AddUserForm'];
+console.log(createuserform.userimg);
+createuserform.userimg.addEventListener("change",(e)=>{
+//console.log("test");
+console.log(createuserform.userimg.files[0]);
+const file= createuserform.userimg.files[0];
+console.log(file);
+const reader=new FileReader();
+reader.readAsDataURL(file);
+
+reader.onload=function(e){
+    console.log(e.target.result);
+    document.querySelector(".preview").setAttribute("src",e.target.result)
+}
+});
 createuserform.addEventListener('submit',async(e)=>{
     e.preventDefault();
     const formdata= new FormData(createuserform);
@@ -27,3 +42,4 @@ if( response.status == 200){
 }
 console.log(response);
 })
+document.querySelector(".preview").setAttribute("src",e.target.value)
