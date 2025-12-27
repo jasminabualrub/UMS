@@ -7,7 +7,9 @@ const getUsers = async()=>{
 getUsers();
 const displayUsers=async()=>{
  try{
+   document.querySelector(".loader").classList.remove('d-none');
    const result=await getUsers();
+
     const users=result.users.map((user)=>{
        // console.log(user);
        
