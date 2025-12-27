@@ -6,7 +6,8 @@ const getUsers = async()=>{
 }
 getUsers();
 const displayUsers=async()=>{
-    const result=await getUsers();
+ try{
+   const result=await getUsers();
     const users=result.users.map((user)=>{
        // console.log(user);
        
@@ -15,7 +16,7 @@ const displayUsers=async()=>{
     <tr>
     <td>${user.id}</td>
     <td>${user.name}</td>
-    <td class="d-flex align-items-center"><img src="${user.imageUrl}" class=" img-fluid w-25"/></td>
+    <td class="d-flex align-items-center "><img src="${user.imageUrl}" class=" img-fluid w-25"/></td>
     <td  >
     <button class="btn btn-outline-danger" onclick=deleteUser(${user.id})>Delete</button>
     <a href= "./details.html?userId=${user.id}" class=" btn btn-outline-info">details</a>
@@ -29,6 +30,12 @@ const displayUsers=async()=>{
 
    }).join('');
    document.querySelector('.Users tbody').innerHTML=users;
+ }
+ catch(error){
+document.querySelector(".errorModel").classList.remove("d-none");
+console.log("hello");
+ }
+    
 }
 displayUsers();
 
