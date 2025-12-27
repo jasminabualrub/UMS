@@ -7,7 +7,7 @@ const getUsers = async()=>{
 getUsers();
 const displayUsers=async()=>{
  try{
-   document.querySelector(".loader").classList.remove('d-none');
+  
    const result=await getUsers();
 
     const users=result.users.map((user)=>{
@@ -32,10 +32,15 @@ const displayUsers=async()=>{
 
    }).join('');
    document.querySelector('.Users tbody').innerHTML=users;
+
  }
  catch(error){
 document.querySelector(".errorModel").classList.remove("d-none");
+
 console.log("hello");
+ }
+ finally{
+    document.querySelector(".loader").classList.add('d-none');
  }
     
 }
